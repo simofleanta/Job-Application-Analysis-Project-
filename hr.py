@@ -18,10 +18,12 @@ import plotly.express as px
 
 
 #sometimes it is hard to choose which jobs are more relevant, so the person hunting for jobs needs to focus on most relevant ones. 
-#most relevant ones are those where interview offer is being offered. 
+#most relevant ones are those where interview offer is responsive. 
 #q to answer: to which jobs should apply more based on where the interview call comes positive. 
 # out of couple of countries, which are the countries most responsive?
 # on what seniority level should the person apply? 
+
+#to answer the questions, I decided to follow a set of exploratory data analysis process:
 # #groupings, 
 #filters
 #pivots
@@ -43,13 +45,13 @@ sns.violinplot(x=df["region"], y=df["interview_call"], palette="Blues")
 #aggregation 
 operations=['mean','sum','min','max']
 a=df.groupby(['Job_seniority','Domain'], as_index=False)[['interview_call']].agg(operations)
-#print(a.reset_index())
+print(a.reset_index())
 
 x=df.groupby(['Domain'])[['interview_call']]
-#print(x.count())
+print(x.count())
 
 y=df.groupby(['interview_call'])
-#print(y.count())
+print(y.count())
 
 #filter interview call 1 
 interview_call=df[df.interview_call==1]
@@ -57,7 +59,7 @@ No_interview_call=df[df.interview_call==2]
 No_answer_interview_call=df[df.interview_call==3]
 #print(interview_call)
 
-#am gona be focusing on one and use the above data instead of the df 
+#I will focus on one and use the above data instead of the df 
 
 """ count how many 1=yes interviews by  domain"""
 #am having 
